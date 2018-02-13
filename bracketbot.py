@@ -146,6 +146,12 @@ def poka(message):
     nomar = types.ReplyKeyboardRemove() # don't forget to hide the mode selector keyboard, just in case
     msg = bot.send_message(message.chat.id, "Пока!\nЕсли я понадоблюсь снова, напишите: /start", reply_markup=nomar) # don't forget to let your users get back to the bot
 
+@bot.message_handler(func=lambda message: message.from.id == "TESTER_ID") # respond to automatic testing bot
+def respond(message):
+    
+    cipher = int(message.text)
+    bot.send_message(message.chat.id, cipher + 1)
+    
 def try_again(message):
     
     markup = types.ReplyKeyboardMarkup(row_width=2)
